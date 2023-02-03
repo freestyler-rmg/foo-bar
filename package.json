@@ -1,5 +1,5 @@
 {
-  "name": "testing",
+  "name": "foo-bar",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -16,8 +16,10 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "bootstrap": "^5.2.3",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "tailwindcss": "^3.2.4",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
@@ -35,6 +37,8 @@
     "eslint-plugin-vue": "^9.5.1",
     "postcss-html": "^1.5.0",
     "prettier": "^2.7.1",
+    "sass": "^1.58.0",
+    "sass-loader": "10",
     "stylelint": "^14.13.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-vue": "^1.4.0",

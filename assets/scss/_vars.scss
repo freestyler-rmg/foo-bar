@@ -1,0 +1,30 @@
+@use "sass:map";
+
+$iteration: 0, 4, 8, 16, 24, 32, 40, 48, 56, 64, 128;
+
+/*
+These breakpoint and container value taken from Tailwind and Bootstrap
+https://www.icwebdesign.co.uk/common-viewport-sizes
+*/
+$breakpoint: (
+	sm: 640px,
+	md: 768px,
+	lg: 1024px,
+	xl: 1280px,
+	xxl: 1536px,
+	xxxl: 1920px,
+);
+
+$container: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1320px,
+	xxxl: 1800px,
+);
+
+
+@mixin mediaQuery($breakpointName) {
+	@media only screen and (max-width: map.get($breakpoint, $breakpointName)) { @content; }
+}

@@ -1,0 +1,75 @@
+@use 'sass:map';
+@use './vars';
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	@each $breakName, $breakValue in vars.$breakpoint {
+		&--#{$breakName} {
+			max-width: map.get(vars.$container, $breakName);
+		}
+	}
+}
+
+.gap {
+	@each $value in vars.$iteration {
+		@if $value != 0 {
+			&-#{$value} {
+				gap: $value * 1px;
+			}
+			&-x-#{$value} {
+				column-gap: $value * 1px;
+			}
+			&--y#{$value} {
+				row-gap: $value * 1px;
+			}
+		}
+	}
+}
+
+.grid {
+
+}
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+.flex {
+	$justify: start center end space-between;
+	$align: start center end stretch;
+
+	@function flex-prefix($val) {
+		@if index((start, end), $val) {
+			@return flex-#{$val};
+		}
+
+		@return $val;
+	}
+
+	display: flex;
+	flex-wrap: wrap;
+
+	gap: 16px;
+
+	@each $value in $justify {
+    &--justify-#{$value} {
+      justify-content: flex-prefix($value);
+    }
+  }
+
+  @each $value in $align {
+    &--align-#{$value} {
+      align-items: flex-prefix($value);
+    }
+  }
+
+	@for $i from 1 through 12 {
+		.flex-#{$i} {
+			flex: 0 1 calc($i/12*100%);
+		}
+	}
+}
+
+.column {
+
+}

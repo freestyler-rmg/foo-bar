@@ -1,0 +1,29 @@
+@use './vars';
+
+@mixin spacing($prefix, $prop, $value) {
+	.#{$prefix}-#{$value} {
+		@if $value == 0 {
+			#{$prop}: $value !important;
+		} @else {
+			#{$prop}: $value * .1rem !important;
+		}
+	}
+}
+
+@each $value in vars.$iteration {
+	@include spacing('p', padding, $value);
+	@include spacing('pl', padding-left, $value);
+	@include spacing('pt', padding-top, $value);
+	@include spacing('pr', padding-right, $value);
+	@include spacing('pb', padding-bottom, $value);
+
+	@include spacing('m', margin, $value);
+	@include spacing('ml', margin-left, $value);
+	@include spacing('mt', margin-top, $value);
+	@include spacing('mr', margin-right, $value);
+	@include spacing('mb', margin-bottom, $value);
+}
+
+.mx-auto {
+	margin: 0 auto;
+}
