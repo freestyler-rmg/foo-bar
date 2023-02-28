@@ -12,7 +12,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/scss/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -53,6 +53,6 @@ export default {
   build: {},
 
   server: {
-    host: '0' // default: localhost
+    host: '0', // default: localhost
   },
 }

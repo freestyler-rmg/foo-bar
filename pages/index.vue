@@ -9,5 +9,3 @@ export default Vue.extend({
   name: 'IndexPage',
 })
 </script>
-
-<style lang="scss" src="~/assets/scss/index.scss" />
