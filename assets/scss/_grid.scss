@@ -1,14 +1,22 @@
 @use 'sass:map';
 @use './vars';
 
-.container {
+.holster {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 16px;
 
+	&--fluid {
+		max-width: 100%;
+	}
+
 	@each $breakName, $breakValue in vars.$breakpoint {
+		@include vars.mediaQuery($breakName) {
+			max-width: map.get(vars.$holster, $breakName);
+		}
+
 		&--#{$breakName} {
-			max-width: map.get(vars.$container, $breakName);
+			max-width: map.get(vars.$holster, $breakName);
 		}
 	}
 }
@@ -22,7 +30,7 @@
 			&-x-#{$value} {
 				column-gap: $value * 1px;
 			}
-			&--y#{$value} {
+			&-y-#{$value} {
 				row-gap: $value * 1px;
 			}
 		}
@@ -30,7 +38,73 @@
 }
 
 .grid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
 
+	&.grid-cols-none {
+		grid-template-columns: none;
+	}
+	@for $value from 1 through 12 {
+		&.grid-cols-#{$value} {
+			grid-template-columns: repeat($value, minmax(0, 1fr));
+		}
+		@each $breakName, $breakPoint in vars.$breakpoint {
+			@include vars.mediaQuery($breakName) {
+				&.#{$breakName}-grid-cols-#{$value} {
+					grid-template-columns: repeat($value, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+
+	.col-auto {
+		grid-column: auto;
+	}
+	.col-span-full {
+		grid-column: 1 / -1;
+	}
+	@for $value from 1 through 12 {
+		.col-span-#{$value} {
+			grid-column: span $value / span $value;
+		}
+		@each $breakName, $breakPoint in vars.$breakpoint {
+			@include vars.mediaQuery($breakName) {
+				&.#{$breakName}-col-span-#{$value} {
+					grid-column: repeat($value, minmax(0, 1fr));
+				}
+			}
+		}
+	}
+
+	.col-start-auto {
+		grid-column-start: auto;
+	}
+	.col-end-auto {
+		grid-column-end: auto;
+	}
+	@for $value from 1 through 13 {
+		.col-start-#{$value} {
+			grid-column-start: $value;
+		}
+		.col-end-#{$value} {
+			grid-column-end: $value;
+		}
+	}
+
+	.row-auto {
+		grid-row: auto;
+	}
+	.row-span-full {
+		grid-row: 1 / -1;
+	}
+	@for $value from 1 through 7 {
+		.row-start-#{$value} {
+			grid-row-start: $value;
+		}
+		.row-end-#{$value} {
+			grid-row-end: $value;
+		}
+	}
 }
 
 /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -49,7 +123,8 @@
 	display: flex;
 	flex-wrap: wrap;
 
-	gap: 16px;
+	gap: vars.$gap;
+	margin-right: vars.$gap * -1;
 
 	@each $value in $justify {
     &--justify-#{$value} {
@@ -65,11 +140,7 @@
 
 	@for $i from 1 through 12 {
 		.flex-#{$i} {
-			flex: 0 1 calc($i/12*100%);
+			flex: 0 1 calc($i/12*100% - vars.$gap);
 		}
 	}
-}
-
-.column {
-
 }

@@ -1,0 +1,105 @@
+@use '~/assets/scss/index';
+
+$arrow-height: 50px;
+$arrow-width: 50px;
+$arrow-vertical-position: 50px;
+$arrow-color: #fff;
+
+.slider-container {
+	overscroll-behavior: contain;
+	max-width: 100%;
+	position: relative;
+}
+
+.sliders {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	scroll-behavior: smooth;
+	overflow-y: hidden;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	flex-flow: row nowrap;
+  flex: none;
+	scroll-snap-stop: always;
+	scrollbar-width: none;
+	position: relative;
+	&::-webkit-scrollbar {
+    background: transparent; /* Chrome/Safari/Webkit */
+    width: 0px;
+  }
+}
+
+.slider-item {
+	flex: none;
+	background-color: #777;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 64px;
+	height: 300px;
+	border: 1px solid #f00;
+	width: 100%;
+	scroll-snap-align: center;
+	position: relative;
+}
+
+.slider-link {
+	text-align: center;
+	margin-top: 16px;
+	a {
+		display: inline-block;
+		padding: 4px;
+		border-radius: 3px;
+		border: 1px solid #f00;
+		line-height: 1;
+	}
+}
+
+.slider-prev-next {
+	& > div {
+		a {
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: $arrow-width;
+			height: $arrow-height;
+			background-color: transparent;
+			font-size: 0;
+
+			& + a {
+				left: auto;
+				right: 0;
+			}
+		}
+	}
+}
+
+.nav-faker {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	pointer-events: none;
+	div {
+		flex: 0 0 auto;
+		width: $arrow-width;
+		height: $arrow-height;
+		font-size: 0;
+		background-color: transparent;
+		border-right: $arrow-width solid $arrow-color;
+		border-top: calc($arrow-height / 2) solid transparent;
+		border-bottom: calc($arrow-height / 2) solid transparent;
+		&:last-child {
+			border-left: $arrow-width solid $arrow-color;
+			border-right: 0;
+		}
+	}
+}

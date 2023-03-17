@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<div class="container container--sm mb-48">
+		<div class="holster mb-24">
+			<div class="hihi">Test</div>
+		</div>
+
+		<div class="holster holster--sm mb-48">
 			<div class="flex mb-24">
 				<div class="hihi flex-1">1<br />2<br />3</div>
 				<div class="hihi flex-2">2</div>
@@ -16,7 +20,7 @@
 			</div>
 		</div>
 
-		<div class="container container--md">
+		<div class="holster holster--md">
 			<div class="grid test gap-16 grid-cols-4 md-grid-cols-8 lg-grid-cols-12 mb-24">
 				<div class="hihi">1</div>
 				<div class="hihi row-start-1 row-end-3 col-start-2">2</div>
@@ -47,8 +51,8 @@
 
 <script>
 export default {
-	name: 'MainTesting',
+	name: 'TestingGrid',
 }
 </script>
 
-<style lang="scss" src="./MainTesting.scss" scoped />
+<style lang="scss" src="./TestingGrid.scss" scoped />

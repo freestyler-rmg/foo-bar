@@ -7,24 +7,24 @@ These breakpoint and container value taken from Tailwind and Bootstrap
 https://www.icwebdesign.co.uk/common-viewport-sizes
 */
 $breakpoint: (
-	sm: 640px,
+	sm: 576px,
 	md: 768px,
 	lg: 1024px,
 	xl: 1280px,
 	xxl: 1536px,
-	xxxl: 1920px,
 );
 
-$container: (
+$holster: (
 	sm: 540px,
 	md: 720px,
 	lg: 960px,
 	xl: 1140px,
 	xxl: 1320px,
-	xxxl: 1800px,
 );
+
+$gap: 16px;
 
 
 @mixin mediaQuery($breakpointName) {
-	@media only screen and (max-width: map.get($breakpoint, $breakpointName)) { @content; }
+	@media only screen and (min-width: map.get($breakpoint, $breakpointName)) { @content; }
 }
