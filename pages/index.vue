@@ -1,5 +1,10 @@
 <template>
-  <main-testing />
+  <div>
+    <Nuxt />
+    <NuxtLink to="/SliderTesting">
+      Slider
+    </NuxtLink>
+  </div>
 </template>
 
 <script lang="ts">
