@@ -1,0 +1,29 @@
+.holster {
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.using-px {
+	font-size: 16px;
+}
+
+.using-em {
+	font-size: 1em;
+}
+
+.using-rem {
+	font-size: 1rem;
+}
+
+.sub-em {
+	font-size: .5em;
+	p {
+		font-size: 2em;
+	}
+}
+
+.sub-rem {
+	font-size: .5rem;
+	p {
+		font-size: 2rem;
+	}
+}

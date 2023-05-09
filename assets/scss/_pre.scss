@@ -19,7 +19,7 @@ and some styling (and some comments too) from preflight.css on Tailwindcss
 3. Use a consistent sensible line-height in all browsers
 */
 html {
-	font-size:  62.5%;  /* 1 */
+	// font-size:  62.5%;  /* 1 */
 	-moz-tab-size: 4; /* 2 */
   tab-size: 4; /* 2 */
   line-height: 1.5; /* 3 */
@@ -34,7 +34,7 @@ html {
 body {
 	margin: 0; /* 1 */
 	line-height: inherit; /* 2 */
-  font-size: 1.6rem; /* 3 */
+  // font-size: 1.6rem; /* 3 */
 }
 
 

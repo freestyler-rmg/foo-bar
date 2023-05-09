@@ -1,0 +1,122 @@
+.holster {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+code {
+	background-color: #ddd;
+	padding: 2px 4px;
+	border-radius: 4px;
+}
+
+.columns {
+	columns: 2;
+	column-fill: auto;
+}
+
+.contain-example {
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 16px;
+	position: relative;
+	max-width: 500px;
+
+	&.contain-fixed {
+		contain: layout;
+		overflow-y: auto;
+		height: 200px;
+	}
+
+	.fixed {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		background-color: #c33;
+		color: #fff;
+		padding: 16px;
+	}
+
+	&.contain-layout {
+		contain: layout;
+	}
+
+	.float-left {
+		float: left;
+	}
+}
+
+.inset-testing {
+	padding: 16px;
+	border: 1px solid #ccc;
+	position: relative;
+	.child {
+		position: absolute;
+		inset: 0 0 auto 0;
+		font-size: 32px;
+		font-weight: bold;
+		background-color: rgba(255,0,0,0.5);
+	}
+}
+
+.file-selector-button {
+	::file-selector-button {
+		background-image: linear-gradient(to right, #f00, #0f0);
+		color: #fff;
+		border: 0;
+		border-radius: 5px;
+		padding: 8px;
+	}
+}
+
+.text-selection {
+	&::selection {
+		background-color: #f00;
+		color: #fff;
+	}
+}
+
+.is-where-styling {
+	:is(.is-styling) {
+		p {
+			color: red;
+		}
+	}
+
+	:where(.where-styling) {
+		p {
+			color: blue;
+		}
+	}
+
+	p {
+		color: green;
+	}
+}
+
+.placeholder-styling {
+	::placeholder {
+		color: white;
+		background-color: red;
+		border: 1px solid green;
+	}
+}
+
+.placeholder-shown-styling {
+	:placeholder-shown {
+		color: white;
+		background-color: red;
+		border: 1px solid green;
+	}
+}
+
+.foo {
+	background-color: red;
+	padding: 16px;
+	&:has(.bar) {
+		background-color: blue;
+	}
+
+	.bar {
+		padding: 16px;
+		background-color: white;
+	}
+}
