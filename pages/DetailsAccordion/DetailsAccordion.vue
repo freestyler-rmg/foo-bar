@@ -16,16 +16,18 @@
 				Something small enough to escape casual notice. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quam est eum, quasi officia doloribus laborum aliquam laboriosam quia, sit, nisi voluptas architecto nemo iure expedita omnis sed. Quia, a.
 			</div>
 		</details>
-		<details class="bangul-details mb-24">
+		<textarea v-model="something" />
+		<details class="bangul-details mb-24" @toggle="testing">
 			<summary>
 				BanGul-like Details
 			</summary>
-			<div class="content">
-				The flowing river never stops and yet the water never stays the same.
+			<div class="content" :style="styleHeight">
+				<!-- The flowing river never stops and yet the water never stays the same.
 				<br /><br />
 				Foam floats upon the pools, scattering, re-forming, never lingering long.
 				<br /><br />
-				So it is with man and all his dwelling places here on earth.
+				So it is with man and all his dwelling places here on earth. -->
+				{{ something }}
 			</div>
 		</details>
 	</div>
@@ -34,6 +36,48 @@
 <script lang="ts">
 export default {
 	name: 'DetailsAccordion',
+
+	data() {
+		return {
+			tempHeight: '',
+			tempVisible: 'hidden',
+			something: 'The flowing river never stops and yet the water never stays the same.',
+		}
+	},
+
+	computed: {
+		styleHeight() {
+			if (this.tempHeight) {
+				return {
+					height: this.tempHeight,
+					visibility: this.tempVisible,
+				}
+			}
+
+			return '';
+		},
+	},
+
+	methods: {
+		testing(event) {
+			const accordion = event.target.querySelector('.content');
+			const contentHeight = accordion.clientHeight;
+
+			accordion.classList.add('collapsing');
+
+				if (event.newState === 'open') {
+					setTimeout(() => {
+						this.tempHeight = contentHeight + 'px';
+						this.tempVisible = 'visible';
+						accordion.classList.remove('collapsing');
+					}, 10);
+				} else {
+					this.tempHeight = '';
+						this.tempVisible = 'hidden';
+					accordion.classList.remove('collapsing');
+				}
+		}
+	},
 }
 </script>
 
